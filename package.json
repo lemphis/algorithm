@@ -1,0 +1,22 @@
+{
+  "name": "algorithm",
+  "version": "1.0.0",
+  "description": "Algorithm solution",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaeho-jang/algorithm.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaeho-jang/algorithm/issues"
+  },
+  "homepage": "https://github.com/jaeho-jang/algorithm#readme",
+  "dependencies": {
+    "readline": "^1.3.0"
+  }
+}
