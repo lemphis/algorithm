@@ -29,8 +29,6 @@ rl.on("line", line => {
         case 4:
             answer = "E";
             break;
-        default:
-            break;
     }
     console.log(answer);
     throwCount === 3 && rl.close();
