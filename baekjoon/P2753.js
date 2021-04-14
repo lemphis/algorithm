@@ -1,5 +1,5 @@
 /**
- * @see [윤년]{@link http://github.com}
+ * @see [윤년]{@link https://www.acmicpc.net/problem/2753}
  */
 const readline = require('readline')
 
