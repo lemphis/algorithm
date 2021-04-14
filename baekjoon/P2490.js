@@ -8,29 +8,12 @@ const rl = readline.createInterface({
     output: process.stdout,
 });
 
+const stick = ["D", "C", "B", "A", "E"];
 let throwCount = 1;
 rl.on("line", line => {
     const arr = line.split(/\s*/);
     const count = arr.filter(predicate).length;
-    let answer;
-    switch (count) {
-        case 0:
-            answer = "D";
-            break;
-        case 1:
-            answer = "C";
-            break;
-        case 2:
-            answer = "B";
-            break;
-        case 3:
-            answer = "A";
-            break;
-        case 4:
-            answer = "E";
-            break;
-    }
-    console.log(answer);
+    console.log(stick[count]);
     throwCount === 3 && rl.close();
     throwCount++;
 }).on("close", function () {
