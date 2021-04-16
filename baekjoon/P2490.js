@@ -8,6 +8,7 @@ const rl = readline.createInterface({
     output: process.stdout,
 });
 
+const predicate = val => Number(val);
 const stick = ["D", "C", "B", "A", "E"];
 let throwCount = 1;
 rl.on("line", line => {
@@ -19,5 +20,3 @@ rl.on("line", line => {
 }).on("close", function () {
     process.exit();
 });
-
-const predicate = val => Number(val);
