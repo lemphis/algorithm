@@ -12,23 +12,17 @@ public class P1267 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int callCount = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int sameCount = 0;
-        int mCount = 0;
-        int total = 0;
+        int m = 0;
+        int y = 0;
         for (int i = 0; i < callCount; ++i) {
             int token = Integer.parseInt(st.nextToken());
-            int quotient = token / 60;
-            int remainder = token % 120;
-            total += quotient * 30;
-            if (remainder > 0) total += 20;
-            if (remainder >= 60 && remainder < 90) {
-                sameCount++;
-            } else {
-                mCount++;
-            }
+            m += 15 * (token / 60 + 1);
+            y += 10 * (token / 30 + 1);
         }
-        System.out.print(mCount > sameCount ? "M " : "Y M ");
-        System.out.print(total);
+        if (y > m) System.out.print("M ");
+        else if (y < m) System.out.print("Y ");
+        else System.out.print("Y M ");
+        System.out.print(Math.min(m, y));
     }
 
 }
