@@ -2,41 +2,41 @@
 
 name: auto-release
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches:
-      - main
-  schedule:
-    - cron: "0 0 * * *"
-    
+    # Triggers the workflow on push or pull request events but only for the main branch
+    push:
+        branches:
+            - main
+    schedule:
+        - cron: "0 0 * * *"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    # This workflow contains a single job called "build"
+    build:
+        # The type of runner that the job will run on
+        runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          ROOT_DIR_PATH=$(pwd)
-          BAEKJOON_DIR_PATH=$ROOT_DIR_PATH/baekjoon
-          TXT_PATH=$ROOT_DIR_PATH/suffix.txt
-          NEW_FILE_NAME=P$(cat $TXT_PATH).java
-          touch $BAEKJOON_DIR_PATH/P$(cat $TXT_PATH).java
-          NEW_FILE_PREFIX=${NEW_FILE_NAME%.*}
-          echo class $NEW_FILE_PREFIX {} > $BAEKJOON_DIR_PATH/$NEW_FILE_NAME
-          echo $(( $(cat $TXT_PATH) + 1 )) > $TXT_PATH
-          # git pull --rebase
-          git config --local user.name "jaeho-jang"
-          git config --local user.email "jaehojang@nate.com"
-          git add $BAEKJOON_DIR_PATH/$NEW_FILE_NAME
-          git commit -m "Wip $NEW_FILE_PREFIX"
-          git push origin main:main
+        # Steps represent a sequence of tasks that will be executed as part of the job
+        steps:
+            # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+            - uses: actions/checkout@v2
+            # Runs a set of commands using the runners shell
+            - name: Run a multi-line script
+              run: |
+                  ROOT_DIR_PATH=$(pwd)
+                  BAEKJOON_DIR_PATH=$ROOT_DIR_PATH/baekjoon
+                  TXT_PATH=$ROOT_DIR_PATH/suffix.txt
+                  NEW_FILE_NAME=P$(cat $TXT_PATH).java
+                  touch $BAEKJOON_DIR_PATH/P$(cat $TXT_PATH).java
+                  NEW_FILE_PREFIX=${NEW_FILE_NAME%.*}
+                  echo class $NEW_FILE_PREFIX {} > $BAEKJOON_DIR_PATH/$NEW_FILE_NAME
+                  echo $(( $(cat $TXT_PATH) + 1 )) > $TXT_PATH
+                  # git pull --rebase
+                  git config --local user.name "jaeho-jang"
+                  git config --local user.email "jaehojang@nate.com"
+                  git add $BAEKJOON_DIR_PATH/$NEW_FILE_NAME
+                  git add $ROOT_DIR_PATH/suffix.txt
+                  git commit -m "Wip $NEW_FILE_PREFIX"
+                  git push origin main:main
