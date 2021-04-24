@@ -34,7 +34,7 @@ jobs:
           NEW_FILE_PREFIX=${NEW_FILE_NAME%.*}
           echo class $NEW_FILE_PREFIX {} > $BAEKJOON_DIR_PATH/$NEW_FILE_NAME
           echo $(( $(cat $TXT_PATH) + 1 )) > $TXT_PATH
-          git pull --rebase
+          # git pull --rebase
           git add $BAEKJOON_DIR_PATH/$NEW_FILE_NAME
           git commit -m "Wip $NEW_FILE_PREFIX"
           git push origin main:main
