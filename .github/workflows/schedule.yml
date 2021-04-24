@@ -40,3 +40,4 @@ jobs:
                   git add $ROOT_DIR_PATH/suffix.txt
                   git commit -m "Wip $NEW_FILE_PREFIX"
                   git push origin main:main
+                  
