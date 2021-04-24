@@ -1,0 +1,38 @@
+# This is a basic workflow to help you get started with Actions
+
+name: auto-release
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  schedule:
+    - cron: "0 0 * * *"
+    
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          TEMP_PATH=$0
+          ROOT_DIR_PATH=${TEMP_PATH%/*}
+          BAEKJOON_DIR_PATH=$ROOT_DIR_PATH/baekjoon
+          TXT_PATH=$ROOT_DIR_PATH/suffix.txt
+          NEW_FILE_NAME=P$(cat $TXT_PATH).java
+          touch $BAEKJOON_DIR_PATH/P$(cat $TXT_PATH).java
+          NEW_FILE_PREFIX=${NEW_FILE_NAME%.*}
+          echo class $NEW_FILE_PREFIX {} > $BAEKJOON_DIR_PATH/$NEW_FILE_NAME
+          echo $(( $(cat $TXT_PATH) + 1 )) > $TXT_PATH
+          git pull --rebase
+          git add $BAEKJOON_DIR_PATH/$NEW_FILE_NAME
+          git commit -m "Wip $NEW_FILE_PREFIX"
+          git push origin main:main
