@@ -14,14 +14,19 @@ public class P2444 {
         int totalLineNum = input * 2 - 1;
 
         for (int i = 1; i <= totalLineNum; ++i) {
-            for (int j = 0; j < input - i; ++j) {
+            int spaceCount = Math.abs(input - i);
+            for (int j = 0; j < spaceCount; ++j) {
                 System.out.print(" ");
             }
-            for (int j = 0; j < totalLineNum; ++j) {
+
+            int topStarCount = i * 2 - 1;
+            for (int j = 0; j < topStarCount && i <= input; ++j) {
                 System.out.print("*");
             }
-            for (int j = 0; j < i - input; ++j) {
-                System.out.print(" ");
+
+            int bottomStarCount = (input * 2 - i) * 2 - 1;
+            for (int j = 0; j < bottomStarCount && i > input; ++j) {
+                System.out.print("*");
             }
             System.out.println();
         }
