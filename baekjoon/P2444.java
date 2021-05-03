@@ -3,8 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * @see <a href="https://www.acmicpc.net/problem/2444">별 찍기 - 6</a>
- * 
+ * @see <a href="https://www.acmicpc.net/problem/2444">별 찍기 - 7</a>
  */
 public class P2444 {
 

@@ -4,7 +4,6 @@ import java.io.InputStreamReader;
 
 /**
  * @see <a href="https://www.acmicpc.net/problem/2443">별 찍기 - 6</a>
- * 
  */
 public class P2443 {
 
