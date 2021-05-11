@@ -5,6 +5,9 @@ using std::cin;
 using std::cout;
 using std::endl;
 
+/**
+ * @see [방 배정](https://www.acmicpc.net/problem/13300)
+ */
 int main() {
     int grades[2][6] = { 0 };
     int studentNum, max, gender, grade;

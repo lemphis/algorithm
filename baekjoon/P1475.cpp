@@ -7,6 +7,9 @@ using std::cout;
 using std::max;
 using std::max_element;
 
+/**
+ * @see [방 번호](https://www.acmicpc.net/problem/1475)
+ */
 int main() {
     int numbers[10] = { 0 };
     int roomNum;
