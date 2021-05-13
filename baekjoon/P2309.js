@@ -16,7 +16,7 @@ rl.on("line", line => {
     if (inputCount === 9) {
         const total = heights.reduce((acc, cur) => acc + cur, 0);
         const extra = total - 100;
-        outer: for (let i = 0; i < inputCount; ++i) {
+        for (let i = 0; i < inputCount; ++i) {
             for (let j = i + 1; j < inputCount; ++j) {
                 if (i === j) continue;
                 if (heights[i] + heights[j] === extra) {
@@ -28,9 +28,10 @@ rl.on("line", line => {
                      * 25번째 line에서 이미 element를 하나 삭제하여 height[j]의 값이 변경되어 이상한 결과가 나옴
                      */
                     heights.splice(heights.indexOf(secondTarget), 1);
-                    break outer;
+                    break;
                 }
             }
+            if (heights.length === 7) break;
         }
         heights.sort((a, b) => a - b).forEach(height => console.log(height));
         rl.close();
