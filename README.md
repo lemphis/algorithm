@@ -53,6 +53,8 @@
   - H-Index (Lv. 2)
 - Brute-Force Search
 - Greedy
+  - 체육복 (Lv. 1)
+    - 더 가지고 있는 사람과 잃어버린 사람 중복 제거 후 앞에서 차례로 앞뒤 번호의 친구가 옷을 가지고 있는지 확인
 - DP (Dynamic Programming)
 - DFS / BFS
 - Binary Search
