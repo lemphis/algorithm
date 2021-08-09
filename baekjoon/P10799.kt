@@ -14,11 +14,7 @@ fun main() {
             beforePopped = false
         } else {
             stack.pop()
-            if (beforePopped) {
-                count++
-            } else {
-                count += stack.size
-            }
+            count += if (beforePopped) 1 else stack.size
             beforePopped = true
         }
     }
