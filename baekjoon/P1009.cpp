@@ -18,10 +18,12 @@ int main()
     {
         int base, exponent;
         cin >> base >> exponent;
-        if (base > 10) base %= 10;
+        if (base > 10)
+            base %= 10;
         exponent = exponent % 4 + 4;
         int result = (long)pow(base, exponent) % 10;
-        if (result == 0) result = 10;
+        if (result == 0)
+            result = 10;
         cout << result << '\n';
     }
 }

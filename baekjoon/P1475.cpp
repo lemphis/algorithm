@@ -10,19 +10,22 @@ using std::max_element;
 /**
  * @see [방 번호](https://www.acmicpc.net/problem/1475)
  */
-int main() {
-    int numbers[10] = { 0 };
-    int roomNum;
+int main()
+{
+    int numbers[10] = {0};
+    int room_num;
     int total = 0;
-    cin >> roomNum;
-    if (roomNum < 10) {
+    cin >> room_num;
+    if (room_num < 10)
+    {
         cout << 1;
         return 0;
     }
-    while (roomNum > 0) {
-        numbers[roomNum % 10]++;
+    while (room_num > 0)
+    {
+        numbers[room_num % 10]++;
         total++;
-        roomNum /= 10;
+        room_num /= 10;
     }
     int recycle = ceil((double(numbers[6]) + double(numbers[9])) / 2);
     numbers[6] = numbers[9] = 0;
