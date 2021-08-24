@@ -1,6 +1,6 @@
-#include <iostream>
 #include <algorithm>
 #include <cmath>
+#include <iostream>
 
 using std::cin;
 using std::cout;
@@ -10,19 +10,16 @@ using std::max_element;
 /**
  * @see [방 번호](https://www.acmicpc.net/problem/1475)
  */
-int main()
-{
+int main() {
     int numbers[10] = {0};
     int room_num;
     int total = 0;
     cin >> room_num;
-    if (room_num < 10)
-    {
+    if (room_num < 10) {
         cout << 1;
         return 0;
     }
-    while (room_num > 0)
-    {
+    while (room_num > 0) {
         numbers[room_num % 10]++;
         total++;
         room_num /= 10;
