@@ -5,7 +5,6 @@
 using std::cin;
 using std::cout;
 using std::ios;
-using std::string;
 
 long gcd(long a, long b);
 
@@ -22,10 +21,11 @@ int main() {
         B = temp;
     }
     long count = gcd(A, B);
-    string answer = "";
+    char answer[count + 1];
     for (int i = 0; i < count; ++i) {
-        answer.append("1");
+        answer[i] = '1';
     }
+    answer[count] = '\0';
     cout << answer << endl;
 }
 
