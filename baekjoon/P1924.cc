@@ -11,9 +11,7 @@ using std::string;
  * @see [2007년](https://www.acmicpc.net/problem/1924)
  */
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
+    ios::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
     int days[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     int m, d;
     cin >> m >> d;
