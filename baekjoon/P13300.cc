@@ -3,17 +3,16 @@
 
 using std::cin;
 using std::cout;
-using std::endl;
 using std::ios;
 
 /**
  * @see [방 배정](https://www.acmicpc.net/problem/13300)
  */
 int main() {
-    cin.tie(NULL), ios::sync_with_stdio(false);
+    ios::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
     int grades[2][6] = {0};
     int student_num, max, gender, grade;
-    int minRoomCount = 0;
+    int min_room_count = 0;
 
     cin >> student_num >> max;
     for (int i = 0; i < student_num; ++i) {
@@ -23,9 +22,9 @@ int main() {
 
     for (int i = 0; i < 2; ++i) {
         for (int j = 0; j < 6; ++j) {
-            minRoomCount += ceil(double(grades[i][j]) / double(max));
+            min_room_count += ceil(double(grades[i][j]) / double(max));
         }
     }
 
-    cout << minRoomCount;
+    cout << min_room_count;
 }

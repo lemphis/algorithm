@@ -1,5 +1,7 @@
 #include <iostream>
 
+#define endl '\n'
+
 using std::cin;
 using std::cout;
 using std::ios;
@@ -9,7 +11,9 @@ using std::string;
  * @see [2007년](https://www.acmicpc.net/problem/1924)
  */
 int main() {
-    cin.tie(NULL), ios::sync_with_stdio(false);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
     int days[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     int m, d;
     cin >> m >> d;
@@ -43,5 +47,5 @@ int main() {
             break;
     }
 
-    cout << answer << '\n';
+    cout << answer << endl;
 }

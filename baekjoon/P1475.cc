@@ -4,6 +4,7 @@
 
 using std::cin;
 using std::cout;
+using std::ios;
 using std::max;
 using std::max_element;
 
@@ -11,6 +12,7 @@ using std::max_element;
  * @see [방 번호](https://www.acmicpc.net/problem/1475)
  */
 int main() {
+    ios::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
     int numbers[10] = {0};
     int room_num;
     int total = 0;

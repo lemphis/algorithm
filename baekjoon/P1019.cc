@@ -11,7 +11,7 @@ void calc(int* arr, int n, int unit);
  * @see [책 페이지](https://www.acmicpc.net/problem/1019)
  */
 int main() {
-    cin.tie(NULL), ios::sync_with_stdio(false);
+    ios::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
     int N;
     int arr[10] = {0};
 

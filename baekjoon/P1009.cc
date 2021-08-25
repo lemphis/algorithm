@@ -1,6 +1,8 @@
 #include <cmath>
 #include <iostream>
 
+#define endl '\n'
+
 using std::cin;
 using std::cout;
 using std::ios;
@@ -9,7 +11,7 @@ using std::ios;
  * @see [분산처리](https://www.acmicpc.net/problem/1009)
  */
 int main() {
-    cin.tie(NULL), ios::sync_with_stdio(false);
+    ios::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
     int T;
     cin >> T;
     while (T--) {
@@ -19,6 +21,6 @@ int main() {
         exponent = exponent % 4 + 4;
         int result = (long)pow(base, exponent) % 10;
         if (result == 0) result = 10;
-        cout << result << '\n';
+        cout << result << endl;
     }
 }
