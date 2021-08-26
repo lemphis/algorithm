@@ -5,7 +5,7 @@ import kotlin.math.sqrt
  * @see <a href="https://www.acmicpc.net/problem/1978">소수 찾기</a>
  */
 fun main() {
-    val N = readLine()!!
+    val n = readLine()!!
     val nums = StringTokenizer(readLine())
     var exclude = 0
     while (nums.hasMoreTokens()) {
@@ -22,5 +22,5 @@ fun main() {
             }
         }
     }
-    println(N.toInt() - exclude)
+    println(n.toInt() - exclude)
 }
