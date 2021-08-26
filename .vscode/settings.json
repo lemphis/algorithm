@@ -64,6 +64,7 @@
         "vector": "cpp",
         "numeric": "cpp",
         "queue": "cpp",
-        "deque": "cpp"
+        "deque": "cpp",
+        "__functional_03": "cpp"
     }
 }
