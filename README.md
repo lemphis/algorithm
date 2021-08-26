@@ -6,8 +6,8 @@
      2. JavaScript
      3. C++
      4. Kotlin
-  - 각 문제에 대해 간단히 Documentation해 두었음
-  - **문제 이름**으로 검색하면 코드 금방 찾을 수 있을걸?
+  <!-- - 각 문제에 대해 간단히 Documentation해 두었음 -->
+  <!-- - **문제 이름**으로 검색하면 코드 금방 찾을 수 있을걸? -->
 
 - Hypertext Reference
   - Online Judge
@@ -17,9 +17,9 @@
   - Workbook
     - [BaaaaaaaaaaarkingDog](https://github.com/encrypted-def/basic-algo-lecture/blob/master/workbook.md)
 
----
+<!-- --- -->
 
-## Programmers
+<!-- ## Programmers
 
 - Hash
   - 완주하지 못한 선수 (Lv. 1)
@@ -58,4 +58,4 @@
 - DP (Dynamic Programming)
 - DFS / BFS
 - Binary Search
-- Graph
+- Graph -->
