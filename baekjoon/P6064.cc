@@ -19,10 +19,7 @@ int main() {
     for (int i = 0; i < T; ++i) {
         cin >> M >> N >> x >> y;
         int max = lcm(M, N);
-        while (1) {
-            if (x > max || (x - 1) % N + 1 == y) {
-                break;
-            }
+        while (x <= max && (x - 1) % N + 1 != y) {
             x += M;
         }
         cout << (x > max ? -1 : x) << endl;
