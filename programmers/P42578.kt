@@ -6,12 +6,8 @@ class Solution {
         var answer = 1
         val flat = clothes.map { it[1] }
         val map = HashMap<String, Int>()
-        for (it in flat) {
-            map[it] = map[it]?.plus(1) ?: 1
-        }
-        for (it in map) {
-            answer *= (it.value + 1)
-        }
+        for (it in flat) map[it] = map[it]?.plus(1) ?: 1
+        for (it in map) answer *= (it.value + 1)
         return answer - 1
     }
 }
