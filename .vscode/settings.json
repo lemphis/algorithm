@@ -65,6 +65,7 @@
         "numeric": "cpp",
         "queue": "cpp",
         "deque": "cpp",
-        "__functional_03": "cpp"
+        "__functional_03": "cpp",
+        "map": "cpp"
     }
 }
