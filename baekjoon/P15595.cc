@@ -15,7 +15,7 @@ using std::string;
  */
 int main() {
     ios::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
-    cout.precision(10);
+    cout.precision(11);
     int n, num, result, memory, performance, language, length;
     double ac = 0, wa = 0;
     string id;
