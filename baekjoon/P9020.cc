@@ -21,10 +21,7 @@ int main() {
             if (!primes[i]) {
                 int times = 2;
                 while (i * times <= n) {
-                    if (!primes[i * times]) {
-                        primes[i * times] = 1;
-                    }
-                    times++;
+                    primes[i * times++] = 1;
                 }
             }
         }
