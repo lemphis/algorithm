@@ -429,3 +429,5 @@ Thumbs.db
 *.code-workspace
 
 # End of https://www.toptal.com/developers/gitignore/api/java,c++,node,python,vscode,intellij
+
+tempCodeRunnerFile.*
