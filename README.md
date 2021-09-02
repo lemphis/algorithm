@@ -30,13 +30,7 @@
   - [베스트앨범](/programmers/P42579.kt)
 - Stack / Queue
   - [기능개발](/programmers/P42586.js)
-  <!-- - [프린터](/programmers/P42587.java) -->
   - [다리를 지나는 트럭](/programmers/P42583.cc)
-  <!-- - 주식가격 -->
-<!-- - Heap
-  - 더 맵게
-  - 디스크 컨트롤러
-  - 이중우선순위큐 -->
 - Sort
   - [K번째수](/programmers/P42748.js)
   - [가장 큰 수](/programmers/P42746.js)
@@ -45,8 +39,5 @@
   - [모의고사](/programmers/P42840.js)
 - Greedy
   - [체육복](/programmers/P42862.kt)
-<!-- - DP -->
 - DFS / BFS
-  - [타겟 넘버](/programmers/P41365.kt)
-<!-- - Binary Search -->
-<!-- - Graph -->
+  - [타겟 넘버](/programmers/P43165.kt)
