@@ -6,8 +6,8 @@
      2. JavaScript
      3. C++
      4. Kotlin
-  <!-- - 각 문제에 대해 간단히 Documentation해 두었음 -->
-  <!-- - **문제 이름**으로 검색하면 코드 금방 찾을 수 있을걸? -->
+  - 각 문제에 대해 간단히 Documentation해 두었음
+  - **문제 이름**으로 검색하면 코드 금방 찾을 수 있을걸?
 
 - Hypertext Reference
   - Online Judge
@@ -17,45 +17,36 @@
   - Workbook
     - [BaaaaaaaaaaarkingDog](https://github.com/encrypted-def/basic-algo-lecture/blob/master/workbook.md)
 
-<!-- --- -->
+---
 
-<!-- ## Programmers
+## Programmers
 
 - Hash
-  - 완주하지 못한 선수 (Lv. 1)
-    - 1명만 완주하지 못함. 간단함
-    - 넘어오는 배열 두 개 sort 후 각 element 비교해서 다르면 참가자 쪽 element 출력
-    - 모두 같으면 참가자 쪽 마지막 element 출력
-  - 전화번호 목록 (Lv. 2)
-    - String 비교해서 하나라도 prefix에 해당하는 게 있으면 false : true
-    - 효율성에서 살짝 난이도 있는 듯
-    - sort된 array를 for 1회 반복으로 해결
-  - 위장 (Lv. 2)
-    - 서로 다른 옷 조합의 수 출력
-    - 뽑지 않을 경우의 수 포함시켜서 경우의 수를 구함. 모두 뽑지 않는 경우는 없으므로 -1 해줌
-  - 베스트앨범 (Lv. 3)
+  - [완주하지 못한 선수](/programmers/P42576.js)
+  - [전화번호 목록](/programmers/P42577.java)
+  - 위장
+    - [위장(JS)](/programmers/P42578.js)
+    - [위장(Kotlin)](/programmers/P42578.kt)
+  - [베스트앨범](/programmers/P42579.kt)
 - Stack / Queue
-  - 기능개발 (Lv. 2)
-    - 각 작업의 남은 진도를 구하고 for문 돌리면서 계산
-  - 프린터 (Lv. 2)
-  - 다리를 지나는 트럭 (Lv. 2)
-  - 주식가격 (Lv. 2)
-- Heap
-  - 더 맵게 (Lv. 2)
-  - 디스크 컨트롤러 (Lv. 3)
-  - 이중우선순위큐 (Lv. 3)
+  - [기능개발](/programmers/P42586.js)
+  <!-- - [프린터](/programmers/P42587.java) -->
+  - [다리를 지나는 트럭](/programmers/P42583.cc)
+  <!-- - 주식가격 -->
+<!-- - Heap
+  - 더 맵게
+  - 디스크 컨트롤러
+  - 이중우선순위큐 -->
 - Sort
-  - K번째수 (Lv. 1)
-    - 요구사항 그대로 배열 slice, sort, merge(concat) 실행
-  - 가장 큰 수 (Lv. 2)
-    - 숫자로 이루어진 배열의 원소들을 붙여서 만들 수 있는 가장 큰 수 출력
-    - string으로 바꿔서 4번 반복하여 붙인 후 4자리를 잘라서 크기 비교 && join
-  - H-Index (Lv. 2)
+  - [K번째수](/programmers/P42748.js)
+  - [가장 큰 수](/programmers/P42746.js)
+  - [H-Index](/programmers/P42747.java)
 - Brute-Force Search
+  - [모의고사](/programmers/P42840.js)
 - Greedy
-  - 체육복 (Lv. 1)
-    - 더 가지고 있는 사람과 잃어버린 사람 중복 제거 후 앞에서 차례로 앞뒤 번호의 친구가 옷을 가지고 있는지 확인
-- DP (Dynamic Programming)
+  - [체육복](/programmers/P42862.kt)
+<!-- - DP -->
 - DFS / BFS
-- Binary Search
-- Graph -->
+  - [타겟 넘버](/programmers/P41365.kt)
+<!-- - Binary Search -->
+<!-- - Graph -->
