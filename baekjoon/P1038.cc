@@ -1,50 +1,35 @@
-#include <cstring>
+#include <algorithm>
 #include <iostream>
+#include <vector>
 
 #define endl '\n'
 
 using std::cin;
 using std::cout;
 using std::ios;
-using std::string;
-using std::to_string;
+using std::sort;
+using std::vector;
 
 /**
  * @see [감소하는 수](https://www.acmicpc.net/problem/1038)
  */
 int main() {
     ios::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
-    int n, temp = 11;
-    long long answer = 11;
-    string s;
-    cin >> n;
-    if (n <= 10) {
-        cout << n << endl;
-        return 0;
-    }
-    while (temp != n) {
-        if (answer > 9876543210) {
-            answer = -1;
-            break;
-        }
-        s = to_string(answer);
-        if (s.length() > (s[0] - '0')) {
-            string add = "1";
-            for (int i = 0; i < s.length() - 1; ++i) {
-                add.append("0");
-            }
-            answer += stoi(add);
-            continue;
-        }
-        bool is_desc = true;
-        for (int i = 0; i < s.length() - 1; ++i) {
-            if (s[i] <= s[i + 1]) {
-                is_desc = false;
+    vector<long long> v;
+    for (int i = 1; i <= 1023; ++i) {
+        long long num = 0;
+        int tmp_i = i;
+        for (int idx = 9; idx >= 0; --idx) {
+            if (tmp_i == 0)
                 break;
-            }
+            else if (tmp_i % 2 == 1)
+                num = num * 10 + idx;
+            tmp_i /= 2;
         }
-        if (is_desc) temp++;
-        answer++;
+        v.push_back(num);
     }
-    cout << answer << endl;
+    sort(v.begin(), v.end());
+    int N;
+    cin >> N;
+    cout << (N > 1022 ? -1 : v[N]) << endl;
 }
