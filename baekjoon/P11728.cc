@@ -1,7 +1,5 @@
 #include <iostream>
 
-#define endl '\n'
-
 using std::cin;
 using std::cout;
 using std::ios;

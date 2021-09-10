@@ -1,6 +1,5 @@
 #include <iostream>
 
-#define endl '\n'
 #define MAX 2187
 
 using std::cin;
@@ -20,7 +19,6 @@ int main() {
     ios::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
     int N;
     cin >> N;
-
     for (int i = 0; i < N; ++i) {
         for (int j = 0; j < N; ++j) {
             cin >> paper[i][j];
@@ -35,12 +33,12 @@ int main() {
 void solve(int x, int y, int n) {
     if (is_same(x, y, n)) {
         answer[paper[x][y] + 1] += 1;
-    } else {
-        int m = n / 3;
-        for (int i = 0; i < 3; ++i) {
-            for (int j = 0; j < 3; ++j) {
-                solve(x + i * m, y + j * m, m);
-            }
+        return;
+    }
+    int m = n / 3;
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            solve(x + i * m, y + j * m, m);
         }
     }
 }
