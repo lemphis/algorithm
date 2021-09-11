@@ -68,6 +68,8 @@
         "__functional_03": "cpp",
         "map": "cpp",
         "__tree": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "climits": "cpp",
+        "set": "cpp"
     }
 }
