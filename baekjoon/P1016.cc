@@ -4,6 +4,7 @@
 
 #define endl '\n'
 #define MAX 1000001
+#define ll long long
 
 using std::cin;
 using std::cout;
@@ -16,25 +17,30 @@ using std::set;
 int main() {
     ios::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
     bool primes[MAX] = {0};
-    for (long long i = 2; i <= MAX; ++i) {
-        long long times = 2;
-        while (i * times <= MAX) {
+    for (ll i = 2; i < MAX; ++i) {
+        ll times = 2;
+        while (i * times < MAX) {
             primes[i * times++] = 1;
         }
     }
-    long long min, max;
-    cin >> min >> max;
-    long long sqrt_max = sqrt(max);
-    set<long long> result;
-    for (long long i = 2; i <= sqrt_max; ++i) {
+    set<ll> square_primes;
+    for (ll i = 2; i < MAX; ++i) {
         if (primes[i] == 0) {
-            long long times = min / i * i;
-            if (times == 0) times = 1;
-            while (i * i * times <= max) {
-                result.insert(i * i * times);
-                times++;
-            }
+            square_primes.insert(i * i);
         }
     }
-    cout << (max - (min - 1) - result.size()) << endl;
+    int size = square_primes.size();
+    ll min, max;
+    cin >> min >> max;
+    set<ll> result;
+    for (auto iter = square_primes.begin(); iter != square_primes.end(); ++iter) {
+        ll times = min / *iter;
+        if (min % *iter != 0) times++;
+        while (*iter * times <= max) {
+            result.insert(*iter * times);
+            times++;
+        }
+    }
+    ll result_size = result.size();
+    cout << max - (min - 1) - result_size << endl;
 }
