@@ -70,6 +70,7 @@
         "__tree": "cpp",
         "stack": "cpp",
         "climits": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "list": "cpp"
     }
 }
