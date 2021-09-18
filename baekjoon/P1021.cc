@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <deque>
 #include <iostream>
 
@@ -6,6 +7,7 @@
 using std::cin;
 using std::cout;
 using std::deque;
+using std::find;
 using std::ios;
 
 /**
@@ -23,5 +25,21 @@ int main() {
     for (int i = 1; i <= N; ++i) {
         items.push_back(i);
     }
-    
+    int count = 0;
+    for (int i = 0; i < M; ++i) {
+        deque<int>::iterator iter = find(items.begin(), items.end(), targets[i]);
+        bool condition = items.end() - iter > iter - items.begin();
+        while (items.front() != targets[i]) {
+            if (condition) {
+                items.push_back(items.front());
+                items.pop_front();
+            } else {
+                items.push_front(items.back());
+                items.pop_back();
+            }
+            count++;
+        }
+        items.pop_front();
+    }
+    cout << count << endl;
 }
