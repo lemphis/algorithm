@@ -13,7 +13,7 @@ using std::queue;
 bool maze[100][100] = {0};
 int distance[100][100] = {0};
 
-void bfs(int r, int c, int n, int m, int dx[], int dy[]);
+void bfs(int r, int c, int n, int m);
 
 /**
  * @see [미로 탐색](https://www.acmicpc.net/problem/2178)
@@ -29,17 +29,17 @@ int main() {
             maze[r][c] = row[c] - 48;
         }
     }
-    int dx[4] = {1, 0, -1, 0};
-    int dy[4] = {0, 1, 0, -1};
     distance[0][0] = 1;
-    bfs(0, 0, N, M, dx, dy);
+    bfs(0, 0, N, M);
     cout << distance[N - 1][M - 1] << endl;
 }
 
-void bfs(int r, int c, int n, int m, int dx[], int dy[]) {
+void bfs(int r, int c, int n, int m) {
     queue<pair<int, int> > q;
     q.push({r, c});
     maze[r][c] = 0;
+    int dx[4] = {1, 0, -1, 0};
+    int dy[4] = {0, 1, 0, -1};
 
     while (!q.empty()) {
         int x = q.front().first;
