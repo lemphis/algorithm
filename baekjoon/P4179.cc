@@ -86,6 +86,7 @@ void fire_bfs(int r, int c) {
             if (maze[row][col] == 'F') {
                 q.push({row, col});
                 fire_distance[row][col] = 0;
+                visited[row][col] = 1;
             }
         }
     }
