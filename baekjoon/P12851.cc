@@ -19,5 +19,43 @@ int main() {
     int N, K;
     cin >> N >> K;
     pair<int, int> answer = bfs(N, K);
-    cout << answer.first << endl << answer.second << endl;
+    cout << answer.first << endl;
+    cout << answer.second << endl;
+}
+
+pair<int, int> bfs(int n, int k) {
+    queue<pair<int, int> > q;
+    q.push({n, 0});
+    visit[n] = 1;
+    int count = 0;
+    int kind = 0;
+
+    while (!q.empty()) {
+        pair<int, int> item = q.front();
+        int now = item.first;
+        int time = item.second;
+        q.pop();
+        visit[now] = 1;
+        if (count && count == time && now == k) {
+            kind++;
+        }
+        if (!count && now == k) {
+            count = time;
+            kind++;
+        }
+        if (count && count < time) {
+            break;
+        }
+        if (now - 1 >= 0 && !visit[now - 1]) {
+            q.push({now - 1, time + 1});
+        }
+        if (now + 1 < MAX && !visit[now + 1]) {
+            q.push({now + 1, time + 1});
+        }
+        if (now * 2 < MAX && !visit[now * 2]) {
+            q.push({now * 2, time + 1});
+        }
+    }
+
+    return {count, kind};
 }
