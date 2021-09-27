@@ -23,9 +23,9 @@ int main() {
         } else if (strcmp(command, "toggle") == 0) {
             set ^= (1 << num);
         } else if (strcmp(command, "all") == 0) {
-            set |= ~(1 << 21);
+            set = (1 << 21) - 1;
         } else if (strcmp(command, "empty") == 0) {
-            set &= (1 << 21);
+            set = 0;
         }
     }
 }
