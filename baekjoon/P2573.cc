@@ -4,7 +4,6 @@
 
 using namespace std;
 
-#define endl '\n'
 #define MAX 300
 
 int iceberg[MAX][MAX] = {0};
