@@ -13,10 +13,10 @@ class Heap {
 };
 
 void Heap::push(int item) {
-    this->size++;
-    this->arr[this->size] = item;
+    size++;
+    arr[size] = item;
     for (int i = size; i > 1; i /= 2) {
-        if (this->arr[i] > this->arr[i / 2]) {
+        if (arr[i] > arr[i / 2]) {
             int temp = arr[i];
             arr[i] = arr[i / 2];
             arr[i / 2] = temp;
@@ -27,7 +27,7 @@ void Heap::push(int item) {
 }
 
 int Heap::pop() {
-    if (this->size == 0) {
+    if (size == 0) {
         return 0;
     }
     int pop_val = arr[1];
@@ -36,19 +36,19 @@ int Heap::pop() {
     while (left <= size) {
         int right = left + 1;
         if (right <= size) {
-            if (this->arr[left] < this->arr[right]) {
+            if (arr[left] < arr[right]) {
                 left = right;
             }
         }
-        if (this->arr[left] < this->arr[left / 2]) {
+        if (arr[left] < arr[left / 2]) {
             break;
         }
-        int temp = this->arr[left];
-        this->arr[left] = this->arr[left / 2];
-        this->arr[left / 2] = temp;
+        int temp = arr[left];
+        arr[left] = arr[left / 2];
+        arr[left / 2] = temp;
         left *= 2;
     }
-    this->size--;
+    size--;
     return pop_val;
 }
 
