@@ -71,6 +71,7 @@
         "stack": "cpp",
         "climits": "cpp",
         "set": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "charconv": "cpp"
     }
 }
