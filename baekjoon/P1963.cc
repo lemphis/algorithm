@@ -1,7 +1,6 @@
 #include <cstring>
 #include <iostream>
 #include <queue>
-#include <string>
 #include <utility>
 #include <vector>
 
@@ -13,7 +12,7 @@ using namespace std;
 int bfs(int src, int target, vector<int> primes, bool check_prime[], bool visit[]);
 
 /**
- * @see [검문](https://www.acmicpc.net/problem/2981)
+ * @see [소수 경로](https://www.acmicpc.net/problem/1963)
  */
 int main() {
     ios::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
