@@ -33,13 +33,13 @@ int main() {
         graph.push_back(Edge(a, b, c));
     }
 
-    int parents[N];
+    int parents[N + 1];
     for (int i = 1; i <= N; ++i) {
         parents[i] = i;
     }
 
     sort(graph.begin(), graph.end());
-    float weight = 0;
+    int weight = 0;
     for (int i = 0; i < graph.size(); ++i) {
         if (_find(parents, graph[i].node[0]) != _find(parents, graph[i].node[1])) {
             weight += graph[i].distance;
