@@ -27,7 +27,7 @@ int main() {
             board[r][c] = temp ? 1 : 0;
         }
     }
-
+    // TODO: 알고리즘 작성
     pair<int, int> exist[n * 2 - 1];
     clear_pairs(exist, n * 2 - 1);
     int count = 0;
