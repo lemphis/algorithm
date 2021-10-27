@@ -1,19 +1,21 @@
 #include <algorithm>
+#include <functional>
 #include <iostream>
+#include <queue>
 #include <vector>
 
 using namespace std;
 
-typedef struct Edge {
-    int node[2];
-    int distance;
-    Edge(int a, int b, int distance) {
-        this->node[0] = a;
-        this->node[1] = b;
-        this->distance = distance;
-    }
-    bool operator<(Edge& edge) { return this->distance < edge.distance; }
-} Edge;
+#define endl '\n'
+#define INFINITY 1e9
+#define MAX 20'001
+
+using pii = pair<int, int>;
+
+vector<pii> adj[MAX];
+int min_dist[MAX];
+
+void dijkstra(int start);
 
 /**
  * @see [최단경로](https://www.acmicpc.net/problem/1753)
@@ -22,12 +24,45 @@ int main() {
     ios::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
     int V, E, K;
     cin >> V >> E >> K;
-    vector<Edge> graph;
+
     while (E--) {
         int u, v, w;
         cin >> u >> v >> w;
-        graph.push_back(Edge(u, v, w));
+        adj[u].push_back(make_pair(w, v));
     }
-    // TODO: 최단 경로 구하는 코드 작성
+
+    fill(min_dist, min_dist + V + 1, INFINITY);
+
+    dijkstra(K);
+
+    for (int i = 1; i <= V; ++i) {
+        if (min_dist[i] >= INFINITY) {
+            cout << "INF" << endl;
+        } else {
+            cout << min_dist[i] << endl;
+        }
+    }
+
     return 0;
+}
+
+void dijkstra(int start) {
+    min_dist[start] = 0;
+    priority_queue<pii> pq;
+    pq.push(make_pair(0, start));
+
+    while (!pq.empty()) {
+        int dist = -pq.top().first;
+        int current = pq.top().second;
+        pq.pop();
+        if (min_dist[current] < dist) continue;
+        for (int i = 0; i < adj[current].size(); ++i) {
+            int next_dist = dist + adj[current][i].first;
+            int next = adj[current][i].second;
+            if (next_dist < min_dist[next]) {
+                min_dist[next] = next_dist;
+                pq.push(make_pair(-next_dist, next));
+            }
+        }
+    }
 }
