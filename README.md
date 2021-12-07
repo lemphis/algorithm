@@ -31,6 +31,7 @@
 - Stack / Queue
   - [기능개발](/programmers/P42586.js)
   - [다리를 지나는 트럭](/programmers/P42583.cc)
+  - [프린터](/programmers/P42587.cc)
 - Sort
   - [K번째수](/programmers/P42748.js)
   - [가장 큰 수](/programmers/P42746.js)
