@@ -21,6 +21,8 @@
 
 ## Programmers
 
+### 코딩테스트 고득점 Kit
+
 - Hash
   - [완주하지 못한 선수](/programmers/P42576.js)
   - [전화번호 목록](/programmers/P42577.java)
@@ -32,6 +34,7 @@
   - [기능개발](/programmers/P42586.js)
   - [다리를 지나는 트럭](/programmers/P42583.cc)
   - [프린터](/programmers/P42587.cc)
+  - [주식가격](/programmers/P42584.cc)
 - Sort
   - [K번째수](/programmers/P42748.js)
   - [가장 큰 수](/programmers/P42746.js)
