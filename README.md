@@ -42,6 +42,7 @@
 - Brute-Force Search
   - [모의고사](/programmers/P42840.js)
   - [소수 찾기](/programmers/P42839.java)
+  - [카펫](/programmers/P42842.java)
 - Greedy
   - [체육복](/programmers/P42862.kt)
 - DFS / BFS
