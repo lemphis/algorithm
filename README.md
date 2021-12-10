@@ -45,5 +45,7 @@
   - [카펫](/programmers/P42842.java)
 - Greedy
   - [체육복](/programmers/P42862.kt)
+- Dynamic Programming
+  - [정수 삼각형](/programmers/P43105.java)
 - DFS / BFS
   - [타겟 넘버](/programmers/P43165.kt)
