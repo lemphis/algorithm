@@ -1,4 +1,4 @@
-#include <iostream>
+#include <stack>
 #include <vector>
 
 using namespace std;
@@ -8,20 +8,20 @@ using namespace std;
  */
 vector<int> solution(vector<int> prices) {
     int size = prices.size();
-    vector<int> answer(size, -1);
-    for (int i = 0; i < size - 1; ++i) {
-        for (int j = i + 1; j < size; ++j) {
-            if (prices[i] > prices[j]) {
-                answer[i] = j - i;
-                break;
-            }
+    stack<int> st;
+    vector<int> answer(size);
+    for (int i = 0; i < size; ++i) {
+        while (!st.empty() && prices[st.top()] > prices[i]) {
+            answer[st.top()] = i - st.top();
+            st.pop();
         }
-        if (answer[i] == -1) {
-            answer[i] = size - i - 1;
-        }
+        st.push(i);
     }
 
-    answer[size - 1] = 0;
+    while (!st.empty()) {
+        answer[st.top()] = size - 1 - st.top();
+        st.pop();
+    }
 
     return answer;
 }
