@@ -8,7 +8,7 @@ using namespace std;
 bool check(int N, int M, int pivot, int tree[]);
 
 /**
- * @see [랜선 자르기](https://www.acmicpc.net/problem/2805)
+ * @see [나무 자르기](https://www.acmicpc.net/problem/2805)
  */
 int main() {
     fastio;
