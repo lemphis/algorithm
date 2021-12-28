@@ -35,6 +35,8 @@
   - [다리를 지나는 트럭](/programmers/P42583.cc)
   - [프린터](/programmers/P42587.cc)
   - [주식가격](/programmers/P42584.cc)
+- Heap
+  - [더 맵게](/programmers/P42626.cc)
 - Sort
   - [K번째수](/programmers/P42748.js)
   - [가장 큰 수](/programmers/P42746.js)
