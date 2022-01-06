@@ -9,8 +9,6 @@
 using namespace std;
 using pii = pair<int, int>;
 
-string convert(int src);
-
 /**
  * @see [멀티버스 Ⅱ](https://www.acmicpc.net/problem/18869)
  */
