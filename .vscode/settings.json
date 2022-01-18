@@ -72,6 +72,7 @@
         "climits": "cpp",
         "set": "cpp",
         "list": "cpp",
-        "charconv": "cpp"
+        "charconv": "cpp",
+        "__memory": "cpp"
     }
 }

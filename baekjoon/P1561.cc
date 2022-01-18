@@ -1,12 +1,12 @@
 #include <algorithm>
 #include <iostream>
-#include <vector>
 
 #define fastio cin.tie(0)->sync_with_stdio(0)
 #define endl '\n'
 
 using namespace std;
 using ll = long long;
+using pii = pair<int, int>;
 
 ll count(ll target, ll M, ll times[]);
 bool check(ll target, ll M, ll N, ll times[]);
@@ -19,8 +19,10 @@ int main() {
     ll N, M;
     cin >> N >> M;
     ll times[M];
+    ll max_time = 0;
     for (int i = 0; i < M; ++i) {
         cin >> times[i];
+        max_time = max(times[i], max_time);
     }
 
     if (N <= M) {
@@ -37,13 +39,16 @@ int main() {
             hi = mid;
     }
 
-    int cnt = count(hi, M, times) - count(lo, M, times);
-    vector<int> rest;
+    pii rest[M];
     for (int i = 0; i < M; ++i) {
-        if (lo % times[i] == 0) rest.push_back(i + 1);
+        rest[i] = {lo % times[i], i};
     }
 
-    cout << rest[diff - 1] << endl;
+    ll cnt = N - count(lo, M, times);
+
+    sort(rest, rest + M);
+
+    cout << rest[cnt - 1].second + 1 << endl;
 
     return 0;
 }
