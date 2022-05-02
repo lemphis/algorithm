@@ -73,6 +73,11 @@
         "set": "cpp",
         "list": "cpp",
         "charconv": "cpp",
-        "__memory": "cpp"
+        "__memory": "cpp",
+        "__bits": "cpp",
+        "clocale": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "variant": "cpp"
     }
 }
