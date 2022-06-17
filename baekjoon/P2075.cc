@@ -1,10 +1,8 @@
-#include <algorithm>
 #include <iostream>
 #include <queue>
 
 #define fastio cin.tie(0)->sync_with_stdio(0)
 #define endl '\n'
-#define MAX 1_500
 
 using namespace std;
 
