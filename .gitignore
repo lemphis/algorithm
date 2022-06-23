@@ -1,4 +1,3 @@
-
 # Created by https://www.toptal.com/developers/gitignore/api/java,c++,node,python,vscode,intellij
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,c++,node,python,vscode,intellij
 
@@ -419,7 +418,6 @@ Thumbs.db
 # profiling data
 .prof
 
-
 ### vscode ###
 .vscode/*
 !.vscode/settings.json
@@ -431,3 +429,4 @@ Thumbs.db
 # End of https://www.toptal.com/developers/gitignore/api/java,c++,node,python,vscode,intellij
 
 tempCodeRunnerFile.*
+test.txt
