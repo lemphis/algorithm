@@ -13,7 +13,7 @@ int _find(int x);
 void _union(int x, int y);
 
 /**
- * @see [여러분의 다리가 되어 드리겠습니다!](https://www.acmicpc.net/problem/20955)
+ * @see [민서의 응급 수술](https://www.acmicpc.net/problem/20955)
  */
 int main() {
     fastio;
