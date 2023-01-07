@@ -1,0 +1,21 @@
+SELECT DATE_FORMAT(SALES_DATE, '%Y-%m-%d') as SALES_DATE,
+    PRODUCT_ID,
+    USER_ID,
+    SALES_AMOUNT
+FROM (
+        SELECT SALES_DATE,
+            PRODUCT_ID,
+            USER_ID,
+            SALES_AMOUNT
+        FROM ONLINE_SALE
+        UNION
+        SELECT SALES_DATE,
+            PRODUCT_ID,
+            null as USER_ID,
+            SALES_AMOUNT
+        FROM OFFLINE_SALE
+    ) t
+WHERE SALES_DATE BETWEEN '2022-03-01' AND DATE_FORMAT(LAST_DAY('2022-03-31'), '%Y-%m-%d')
+ORDER BY SALES_DATE,
+    PRODUCT_ID,
+    USER_ID
