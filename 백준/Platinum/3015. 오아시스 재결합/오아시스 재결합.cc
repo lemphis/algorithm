@@ -1,44 +1,36 @@
 #include <iostream>
 #include <stack>
-#include <utility>
 
-using namespace std;
-
-using pii = pair<int, int>;
-
+#define fastio cin.tie(0)->sync_with_stdio(0)
 #define endl '\n'
 
-/**
- * @see [오아시스 재결합](https://www.acmicpc.net/problem/3015)
- */
+using namespace std;
+using pii = pair<int, int>;
+
 int main() {
-    ios::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
+    fastio;
     int N;
     cin >> N;
-    int people[N];
-    for (int i = 0; i < N; ++i) {
-        cin >> people[i];
-    }
 
+    long total = 0;
     stack<pii> st;
-    long long max_count = 0;
-    for (int i = 0; i < N; ++i) {
-        pii target = {people[i], 1};
-        if (!st.empty()) {
-            while (!st.empty() && st.top().first <= target.first) {
-                if (target.first == st.top().first) {
-                    target.second += st.top().second;
-                }
-                max_count += st.top().second;
-                st.pop();
+    while (N--) {
+        pii people = {0, 1};
+        cin >> people.first;
+        while (!st.empty() && st.top().first <= people.first) {
+            if (st.top().first == people.first) {
+                people.second += st.top().second;
             }
+            total += st.top().second;
+            st.pop();
         }
-
-        if (!st.empty()) ++max_count;
-        st.push(target);
+        if (!st.empty()) {
+            ++total;
+        }
+        st.push(people);
     }
 
-    cout << max_count << endl;
+    cout << total;
 
     return 0;
 }
