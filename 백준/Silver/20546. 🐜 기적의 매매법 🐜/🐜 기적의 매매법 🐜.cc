@@ -5,10 +5,6 @@
 
 using namespace std;
 
-const int MAX = 1'000;
-int map[MAX][MAX];
-int memo[MAX][MAX];
-
 int main() {
     fastio;
     int cash;
