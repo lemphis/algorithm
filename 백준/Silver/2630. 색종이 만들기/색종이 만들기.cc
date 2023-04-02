@@ -9,11 +9,8 @@ using namespace std;
 bool paper[MAX][MAX];
 
 void dfs(int start_r, int start_c, int& white, int& blue, int N);
-bool check(int start_r, int start_c, int N);
+inline bool check(int start_r, int start_c, int N);
 
-/**
- * @see [색종이 만들기](https://www.acmicpc.net/problem/2630)
- */
 int main() {
     fastio;
     int N;
@@ -45,7 +42,7 @@ void dfs(int start_r, int start_c, int& white, int& blue, int N) {
     dfs(start_r + N / 2, start_c + N / 2, white, blue, N / 2);
 }
 
-bool check(int start_r, int start_c, int N) {
+inline bool check(int start_r, int start_c, int N) {
     bool base = paper[start_r][start_c];
     for (int r = start_r; r < start_r + N; ++r) {
         for (int c = start_c; c < start_c + N; ++c) {
