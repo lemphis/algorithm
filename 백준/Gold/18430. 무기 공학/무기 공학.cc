@@ -40,55 +40,50 @@ void dfs(int N, int M, int row, int col, int temp, int& ans) {
         ans = max(ans, temp);
         return;
     }
-    for (int r = row; r < N; ++r) {
-        for (int c = col; c < M; ++c) {
-            if (visited[r][c]) {
-                continue;
-            }
-            if (is_inside(N, M, r - 1, c) && is_inside(N, M, r, c + 1) && !visited[r][c] && !visited[r - 1][c] && !visited[r][c + 1]) {  // 위 오른쪽
-                visited[r][c] = 1;
-                visited[r - 1][c] = 1;
-                visited[r][c + 1] = 1;
-                temp += ((wood[r][c] * 2) + wood[r - 1][c] + wood[r][c + 1]);
-                dfs(N, M, r, c + 1, temp, ans);
-                temp -= ((wood[r][c] * 2) + wood[r - 1][c] + wood[r][c + 1]);
-                visited[r][c] = 0;
-                visited[r - 1][c] = 0;
-                visited[r][c + 1] = 0;
-            }
-            if (is_inside(N, M, r, c + 1) && is_inside(N, M, r + 1, c) && !visited[r][c] && !visited[r][c + 1] && !visited[r + 1][c]) {  // 오른쪽 아래
-                visited[r][c] = 1;
-                visited[r][c + 1] = 1;
-                visited[r + 1][c] = 1;
-                temp += ((wood[r][c] * 2) + wood[r][c + 1] + wood[r + 1][c]);
-                dfs(N, M, r, c + 1, temp, ans);
-                temp -= ((wood[r][c] * 2) + wood[r][c + 1] + wood[r + 1][c]);
-                visited[r][c] = 0;
-                visited[r][c + 1] = 0;
-                visited[r + 1][c] = 0;
-            }
-            if (is_inside(N, M, r + 1, c) && is_inside(N, M, r, c - 1) && !visited[r][c] && !visited[r + 1][c] && !visited[r][c - 1]) {  // 아래 왼쪽
-                visited[r][c] = 1;
-                visited[r + 1][c] = 1;
-                visited[r][c - 1] = 1;
-                temp += ((wood[r][c] * 2) + wood[r + 1][c] + wood[r][c - 1]);
-                dfs(N, M, r, c + 1, temp, ans);
-                temp -= ((wood[r][c] * 2) + wood[r + 1][c] + wood[r][c - 1]);
-                visited[r][c] = 0;
-                visited[r + 1][c] = 0;
-                visited[r][c - 1] = 0;
-            }
-            if (is_inside(N, M, r, c - 1) && is_inside(N, M, r - 1, c) && !visited[r][c] && !visited[r][c - 1] && !visited[r - 1][c]) {  // 왼쪽 위
-                visited[r][c] = 1;
-                visited[r][c - 1] = 1;
-                visited[r - 1][c] = 1;
-                temp += ((wood[r][c] * 2) + wood[r][c - 1] + wood[r - 1][c]);
-                dfs(N, M, r, c + 1, temp, ans);
-                temp -= ((wood[r][c] * 2) + wood[r][c - 1] + wood[r - 1][c]);
-                visited[r][c] = 0;
-                visited[r][c - 1] = 0;
-                visited[r - 1][c] = 0;
-            }
+    if (!visited[row][col]) {
+        if (is_inside(N, M, row - 1, col) && is_inside(N, M, row, col + 1) && !visited[row][col] && !visited[row - 1][col] && !visited[row][col + 1]) {  // 위 오른쪽
+            visited[row][col] = 1;
+            visited[row - 1][col] = 1;
+            visited[row][col + 1] = 1;
+            temp += ((wood[row][col] * 2) + wood[row - 1][col] + wood[row][col + 1]);
+            dfs(N, M, row, col + 1, temp, ans);
+            temp -= ((wood[row][col] * 2) + wood[row - 1][col] + wood[row][col + 1]);
+            visited[row][col] = 0;
+            visited[row - 1][col] = 0;
+            visited[row][col + 1] = 0;
+        }
+        if (is_inside(N, M, row, col + 1) && is_inside(N, M, row + 1, col) && !visited[row][col] && !visited[row][col + 1] && !visited[row + 1][col]) {  // 오른쪽 아래
+            visited[row][col] = 1;
+            visited[row][col + 1] = 1;
+            visited[row + 1][col] = 1;
+            temp += ((wood[row][col] * 2) + wood[row][col + 1] + wood[row + 1][col]);
+            dfs(N, M, row, col + 1, temp, ans);
+            temp -= ((wood[row][col] * 2) + wood[row][col + 1] + wood[row + 1][col]);
+            visited[row][col] = 0;
+            visited[row][col + 1] = 0;
+            visited[row + 1][col] = 0;
+        }
+        if (is_inside(N, M, row + 1, col) && is_inside(N, M, row, col - 1) && !visited[row][col] && !visited[row + 1][col] && !visited[row][col - 1]) {  // 아래 왼쪽
+            visited[row][col] = 1;
+            visited[row + 1][col] = 1;
+            visited[row][col - 1] = 1;
+            temp += ((wood[row][col] * 2) + wood[row + 1][col] + wood[row][col - 1]);
+            dfs(N, M, row, col + 1, temp, ans);
+            temp -= ((wood[row][col] * 2) + wood[row + 1][col] + wood[row][col - 1]);
+            visited[row][col] = 0;
+            visited[row + 1][col] = 0;
+            visited[row][col - 1] = 0;
+        }
+        if (is_inside(N, M, row, col - 1) && is_inside(N, M, row - 1, col) && !visited[row][col] && !visited[row][col - 1] && !visited[row - 1][col]) {  // 왼쪽 위
+            visited[row][col] = 1;
+            visited[row][col - 1] = 1;
+            visited[row - 1][col] = 1;
+            temp += ((wood[row][col] * 2) + wood[row][col - 1] + wood[row - 1][col]);
+            dfs(N, M, row, col + 1, temp, ans);
+            temp -= ((wood[row][col] * 2) + wood[row][col - 1] + wood[row - 1][col]);
+            visited[row][col] = 0;
+            visited[row][col - 1] = 0;
+            visited[row - 1][col] = 0;
         }
     }
     dfs(N, M, row, col + 1, temp, ans);
