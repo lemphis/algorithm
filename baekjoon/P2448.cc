@@ -14,7 +14,7 @@ void draw_board(int r, int c, int n);
 void print_board(int n);
 
 /**
- * @see [별 찍기 - 11](https://www.acmicpc.net/problem/2447)
+ * @see [별 찍기 - 11](https://www.acmicpc.net/problem/2448)
  */
 int main() {
     int N;
