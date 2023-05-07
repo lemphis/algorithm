@@ -1,43 +1,52 @@
 #include <algorithm>
 #include <iostream>
-#include <vector>
+
+#define fastio cin.tie(0)->sync_with_stdio(0)
+#define endl '\n'
 
 using namespace std;
 
-int main(void) {
-    int n, c, num, st, router, start, end, mid, ans = 0;
-    cin >> n >> c;
-    vector<int> pos;
-    for (int i = 0; i < n; i++) {
-        cin >> num;
-        pos.push_back(num);
+bool check(int pos[], int mid, int N, int C, int& ans);
+
+int main() {
+    fastio;
+    int N, C;
+    cin >> N >> C;
+    int pos[N];
+    for (int i = 0; i < N; ++i) {
+        cin >> pos[i];
     }
-    sort(pos.begin(), pos.end());
-    start = 1;
-    end = pos[n - 1] - pos[0];
 
-    while (start <= end) {
-        router = 1;
-        mid = (start + end) / 2;
-        st = pos[0];
+    sort(pos, pos + N);
 
-        for (int i = 1; i < n; i++) {
-            if (pos[i] - st >= mid) {
-                router++;
-                st = pos[i];
-            }
+    int lo = 0, hi = pos[N - 1] - pos[0] + 1;
+    int ans = 0;
+    while (lo + 1 < hi) {
+        int mid = (lo + hi) >> 1;
+        if (check(pos, mid, N, C, ans)) {
+            lo = mid;
+        } else {
+            hi = mid;
         }
-
-        if (router >= c) {
-            ans = max(ans, mid);
-            start = mid + 1;
-        }
-
-        else
-            end = mid - 1;
     }
 
     cout << ans;
 
     return 0;
+}
+
+bool check(int pos[], int mid, int N, int C, int& ans) {
+    int temp = pos[0];
+    int count = 1;
+    for (int i = 1; i < N; ++i) {
+        if (pos[i] - temp >= mid) {
+            ++count;
+            temp = pos[i];
+        }
+    }
+    if (count >= C) {
+        ans = max(ans, mid);
+        return true;
+    }
+    return false;
 }
