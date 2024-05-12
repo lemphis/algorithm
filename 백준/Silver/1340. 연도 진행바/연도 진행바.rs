@@ -51,7 +51,6 @@ fn main() {
     for i in 0..month - 1 {
         days_cnt += DAYS[i as usize];
         if i == 1 && is_leap_year {
-            dbg!("??");
             days_cnt += 1;
         }
     }
