@@ -47,17 +47,16 @@ fn max_dfs(signs: &[char], visited: &mut [bool], ans: &mut [usize], idx: usize) 
         return;
     }
     for i in (0..10).rev() {
-        if !visited[i] {
-            if (signs[idx - 1] == '<' && ans[idx - 1] < i)
-                || (signs[idx - 1] == '>' && ans[idx - 1] > i)
-            {
-                ans[idx] = i;
-                visited[i] = true;
-                max_dfs(signs, visited, ans, idx + 1);
-                visited[i] = false;
-                if ans[ans.len() - 1] != 10 {
-                    break;
-                }
+        if !visited[i]
+            && ((signs[idx - 1] == '<' && ans[idx - 1] < i)
+                || (signs[idx - 1] == '>' && ans[idx - 1] > i))
+        {
+            ans[idx] = i;
+            visited[i] = true;
+            max_dfs(signs, visited, ans, idx + 1);
+            visited[i] = false;
+            if ans[ans.len() - 1] != 10 {
+                break;
             }
         }
     }
@@ -68,17 +67,16 @@ fn min_dfs(signs: &[char], visited: &mut [bool], ans: &mut [usize], idx: usize) 
         return;
     }
     for i in 0..10 {
-        if !visited[i] {
-            if (signs[idx - 1] == '<' && ans[idx - 1] < i)
-                || (signs[idx - 1] == '>' && ans[idx - 1] > i)
-            {
-                ans[idx] = i;
-                visited[i] = true;
-                min_dfs(signs, visited, ans, idx + 1);
-                visited[i] = false;
-                if ans[ans.len() - 1] != 10 {
-                    break;
-                }
+        if !visited[i]
+            && ((signs[idx - 1] == '<' && ans[idx - 1] < i)
+                || (signs[idx - 1] == '>' && ans[idx - 1] > i))
+        {
+            ans[idx] = i;
+            visited[i] = true;
+            min_dfs(signs, visited, ans, idx + 1);
+            visited[i] = false;
+            if ans[ans.len() - 1] != 10 {
+                break;
             }
         }
     }
