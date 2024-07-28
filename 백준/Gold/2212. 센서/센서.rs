@@ -9,10 +9,6 @@ fn main() {
     for sensor in sensors.iter_mut() {
         *sensor = it.next().unwrap();
     }
-    if k > n {
-        print!("0");
-        return;
-    }
     sensors.sort_unstable();
     let mut diffs: Vec<i32> = sensors.windows(2).map(|w| w[1] - w[0]).collect();
     diffs.sort_by(|a, b| b.cmp(a));
