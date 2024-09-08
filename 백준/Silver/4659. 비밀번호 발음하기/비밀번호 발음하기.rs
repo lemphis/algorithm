@@ -12,9 +12,6 @@ fn main() {
         }
         let mut is_possible = true;
         let chars = password.chars().collect::<Vec<_>>();
-        if chars.iter().all(|c| !vowels.contains(c)) {
-            is_possible = false;
-        }
         let mut consonant_pos = -1;
         let mut vowel_pos = -1;
         for (i, c) in chars.iter().enumerate() {
@@ -27,6 +24,9 @@ fn main() {
                 is_possible = false;
                 break;
             }
+        }
+        if vowel_pos == -1 {
+            is_possible = false;
         }
         if chars
             .windows(2)
