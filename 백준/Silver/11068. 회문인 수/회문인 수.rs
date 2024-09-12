@@ -9,15 +9,7 @@ fn main() {
         let num = input.next().unwrap();
         let mut is_same = false;
         for base in 2..=64 {
-            let mut temp_is_same = true;
-            let converted = to_base_n(num, base).chars().collect::<Vec<_>>();
-            for i in 0..converted.len() / 2 {
-                if converted[i] != converted[converted.len() - 1 - i] {
-                    temp_is_same = false;
-                    break;
-                }
-            }
-            if temp_is_same {
+            if is_palindrome_in_base(num, base) {
                 is_same = true;
                 break;
             }
@@ -27,13 +19,17 @@ fn main() {
     print!("{output}");
 }
 
-fn to_base_n(num: usize, base: usize) -> String {
-    let mut converted = Vec::new();
-    let mut temp = num;
-    while temp > 0 {
-        converted.push(b'0' + (temp % base) as u8);
-        temp /= base;
+fn is_palindrome_in_base(mut num: usize, base: usize) -> bool {
+    let mut digits = Vec::new();
+    while num > 0 {
+        digits.push(num % base);
+        num /= base;
     }
-    converted.reverse();
-    String::from_utf8(converted).unwrap()
+    let len = digits.len();
+    for i in 0..len / 2 {
+        if digits[i] != digits[len - 1 - i] {
+            return false;
+        }
+    }
+    true
 }
