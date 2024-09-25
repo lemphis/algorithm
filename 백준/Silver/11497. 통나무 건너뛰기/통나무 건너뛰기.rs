@@ -25,7 +25,7 @@ fn main() {
         for i in 0..n - 1 {
             max_diff = max_diff.max(logs[i + 1].abs_diff(logs[i]));
         }
-        writeln!(output, "{}", max_diff).unwrap();
+        writeln!(output, "{max_diff}").unwrap();
     }
     print!("{output}");
 }
