@@ -1,4 +1,4 @@
-use std::{cmp::Ordering, io};
+use std::io;
 
 fn main() {
     let buf = io::read_to_string(io::stdin()).unwrap();
@@ -7,26 +7,9 @@ fn main() {
     let (mut before, mut inc_count, mut dec_count, mut max) = (input.next().unwrap(), 1, 1, 1);
     for _ in 1..n {
         let num = input.next().unwrap();
-        match num.cmp(&before) {
-            Ordering::Less => {
-                dec_count += 1;
-                inc_count = 1;
-            }
-            Ordering::Greater => {
-                inc_count += 1;
-                dec_count = 1;
-            }
-            Ordering::Equal => {
-                inc_count += 1;
-                dec_count += 1;
-            }
-        }
-        if max < inc_count {
-            max = inc_count;
-        }
-        if max < dec_count {
-            max = dec_count;
-        }
+        inc_count = if num >= before { inc_count + 1 } else { 1 };
+        dec_count = if num <= before { dec_count + 1 } else { 1 };
+        max = max.max(inc_count).max(dec_count);
         before = num;
     }
     print!("{max}");
