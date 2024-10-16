@@ -14,73 +14,45 @@ fn main() {
 }
 
 fn side(n: usize, output: &mut String) {
-    for _ in 0..n {
-        output.push('*');
-    }
-    for _ in 0..(n - 1) * 2 - 1 {
-        output.push(' ');
-    }
-    for _ in 0..n {
-        output.push('*');
-    }
+    output.push_str(&"*".repeat(n));
+    output.push_str(&" ".repeat((n - 1) * 2 - 1));
+    output.push_str(&"*".repeat(n));
     output.push('\n');
 }
 
 fn top_middle(n: usize, output: &mut String) {
     for r in 1..=n - 2 {
-        for _ in 0..r {
-            output.push(' ');
-        }
+        output.push_str(&" ".repeat(r));
         output.push('*');
-        for _ in 0..n - 2 {
-            output.push(' ');
-        }
+        output.push_str(&" ".repeat(n - 2));
         output.push('*');
-        for _ in 0..(n - 1) * 2 - 1 - (r * 2) {
-            output.push(' ');
-        }
+        output.push_str(&" ".repeat((n - 1) * 2 - 1 - (r * 2)));
         output.push('*');
-        for _ in 0..n - 2 {
-            output.push(' ');
-        }
+        output.push_str(&" ".repeat(n - 2));
         output.push('*');
         output.push('\n');
     }
 }
 
 fn center(n: usize, output: &mut String) {
-    for _ in 0..n - 1 {
-        output.push(' ');
-    }
+    output.push_str(&" ".repeat(n - 1));
     output.push('*');
-    for _ in 0..n - 2 {
-        output.push(' ');
-    }
+    output.push_str(&" ".repeat(n - 2));
     output.push('*');
-    for _ in 0..n - 2 {
-        output.push(' ');
-    }
+    output.push_str(&" ".repeat(n - 2));
     output.push('*');
     output.push('\n');
 }
 
 fn bottom_middle(n: usize, output: &mut String) {
     for r in (1..=n - 2).rev() {
-        for _ in 0..r {
-            output.push(' ');
-        }
+        output.push_str(&" ".repeat(r));
         output.push('*');
-        for _ in 0..n - 2 {
-            output.push(' ');
-        }
+        output.push_str(&" ".repeat(n - 2));
         output.push('*');
-        for _ in 0..(n - 1) * 2 - 1 - (r * 2) {
-            output.push(' ');
-        }
+        output.push_str(&" ".repeat((n - 1) * 2 - 1 - (r * 2)));
         output.push('*');
-        for _ in 0..n - 2 {
-            output.push(' ');
-        }
+        output.push_str(&" ".repeat(n - 2));
         output.push('*');
         output.push('\n');
     }
