@@ -6,12 +6,9 @@ fn main() {
     let mut input = || input.next().unwrap();
     let (n, m) = (input(), input());
     let mut prices = (0..m).map(|_| input()).collect::<Vec<_>>();
-    prices.sort_unstable_by(|a, b| b.cmp(a));
+    prices.sort_unstable();
     let (mut min_price, mut max_total_price) = (0, 0);
-    for (i, &price) in prices.iter().enumerate() {
-        if i + 1 > n {
-            break;
-        }
+    for (i, &price) in prices.iter().rev().enumerate().take(n) {
         let total_price = price * (i + 1);
         if total_price > max_total_price {
             min_price = price;
