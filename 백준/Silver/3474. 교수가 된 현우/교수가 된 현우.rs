@@ -7,20 +7,13 @@ fn main() {
     let t = f();
     let mut output = String::new();
     for _ in 0..t {
-        let n = f();
-        output.push_str(&format!(
-            "{}\n",
-            count_factors(n, 2).min(count_factors(n, 5))
-        ));
+        let mut n = f();
+        let mut count = 0;
+        while n > 0 {
+            count += n / 5;
+            n /= 5;
+        }
+        output.push_str(&format!("{}\n", count));
     }
     print!("{output}");
-}
-
-fn count_factors(mut n: usize, p: usize) -> usize {
-    let mut count = 0;
-    while n > 0 {
-        count += n / p;
-        n /= p;
-    }
-    count
 }
