@@ -1,7 +1,8 @@
-use std::{
-    collections::HashMap,
-    io::{self, stdin},
-};
+use std::io::{self, stdin};
+
+const STROKES: [i32; 26] = [
+    3, 2, 1, 2, 4, 3, 1, 3, 1, 1, 3, 1, 3, 2, 1, 2, 2, 2, 1, 2, 1, 1, 1, 2, 2, 1,
+];
 
 fn main() {
     let buf = io::read_to_string(stdin()).unwrap();
@@ -26,44 +27,23 @@ fn main() {
         zip.push(c);
     }
 
-    let strokes = HashMap::from([
-        ('A', 3),
-        ('B', 2),
-        ('C', 1),
-        ('D', 2),
-        ('E', 4),
-        ('F', 3),
-        ('G', 1),
-        ('H', 3),
-        ('I', 1),
-        ('J', 1),
-        ('K', 3),
-        ('L', 1),
-        ('M', 3),
-        ('N', 2),
-        ('O', 1),
-        ('P', 2),
-        ('Q', 2),
-        ('R', 2),
-        ('S', 1),
-        ('T', 2),
-        ('U', 1),
-        ('V', 1),
-        ('W', 1),
-        ('X', 2),
-        ('Y', 2),
-        ('Z', 1),
-    ]);
-    let mut counts = zip.chars().map(|c| strokes[&c]).collect::<Vec<_>>();
+    let mut counts = zip
+        .chars()
+        .map(|c| STROKES[usize::from(c as u8 - b'A')])
+        .collect::<Vec<_>>();
     while counts.len() > 2 {
         counts = counts
-            .iter()
-            .enumerate()
-            .skip(1)
-            .map(|(i, &n)| (counts[i - 1] + n) % 10)
+            .windows(2)
+            .map(|w| (w[0] + w[1]) % 10)
             .collect::<Vec<_>>();
     }
-    let mut ans = counts[0].to_string();
-    ans.push_str(&counts[1].to_string());
-    print!("{}%", ans.parse::<i32>().unwrap());
+    print!(
+        "{}%",
+        counts
+            .iter()
+            .map(|count| count.to_string())
+            .collect::<String>()
+            .parse::<usize>()
+            .unwrap()
+    );
 }
