@@ -14,22 +14,18 @@ fn main() {
     let mut is_prime = [true; MAX];
     for i in 2..(MAX as f64).sqrt() as usize + 1 {
         if is_prime[i] {
-            let mut times = 2;
-            while i * times < MAX {
-                is_prime[i * times] = false;
-                times += 1;
+            for m in (i * i..MAX).step_by(i) {
+                is_prime[m] = false;
             }
         }
     }
-    let ans = nums
+    let primes = nums
         .iter()
         .filter(|&&num| is_prime[num])
-        .collect::<HashSet<_>>()
-        .into_iter()
-        .fold(1, |acc, &cur| acc * cur);
-    if ans == 1 {
+        .collect::<HashSet<_>>();
+    if primes.is_empty() {
         print!("-1");
         return;
     }
-    print!("{ans}");
+    print!("{}", primes.iter().fold(1, |acc, &cur| acc * cur));
 }
