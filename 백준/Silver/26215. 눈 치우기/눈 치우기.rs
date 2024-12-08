@@ -5,36 +5,16 @@ fn main() {
     let mut input = buf.split_ascii_whitespace().flat_map(str::parse::<usize>);
     let mut f = || input.next().unwrap();
     let n = f();
-    let mut snows = (0..n).map(|_| f()).collect::<Vec<_>>();
-    for i in 0..1440 {
-        snows = snows
-            .iter()
-            .filter(|&&snow| snow > 0)
-            .cloned()
-            .collect::<Vec<_>>();
-        snows.sort_by(|a, b| b.cmp(a));
-        if snows.is_empty() {
-            print!("{i}");
-            return;
-        }
-        if *snows.last().unwrap() == 0 {
-            snows.pop();
-            if snows.len() > 1 && *snows.last().unwrap() == 0 {
-                snows.pop();
-            }
-        }
-        let len = snows.len();
-        snows[0] -= 1;
-        if len > 1 {
-            snows[1] -= 1;
-        }
+    let (mut max, mut sum) = (0, 0);
+    for _ in 0..n {
+        let snow = f();
+        sum += snow;
+        max = max.max(snow);
     }
-    print!(
-        "{}",
-        if snows.is_empty() || snows.iter().all(|&snow| snow == 0) {
-            "1440"
-        } else {
-            "-1"
-        }
-    );
+    let ans = max.max((sum + 1) / 2);
+    if ans > 1440 {
+        print!("-1");
+        return;
+    }
+    print!("{ans}");
 }
