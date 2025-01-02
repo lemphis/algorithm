@@ -11,8 +11,7 @@ fn main() {
     let mut set = (0..n).map(|_| f()).collect::<HashSet<_>>();
     let mut output = String::new();
     for _ in 0..m {
-        let keywords = f().split(",").collect::<Vec<_>>();
-        for keyword in keywords.iter() {
+        for keyword in f().split(",") {
             set.remove(keyword);
         }
         output.push_str(&format!("{}\n", set.len()));
