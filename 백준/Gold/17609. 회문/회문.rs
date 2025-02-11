@@ -9,36 +9,27 @@ fn main() {
     let mut output = String::with_capacity(n * 2);
     for _ in 0..n {
         let chars: Vec<char> = f().chars().collect();
-        let (mut l, mut r, mut removed, mut is_palindrome) = (0, chars.len() - 1, false, true);
-        while l < r {
-            if chars[l] != chars[r] {
-                is_palindrome =
-                    check_palindrome(&chars[l + 1..=r]) || check_palindrome(&chars[l..=r - 1]);
-                removed = true;
-                break;
-            } else {
-                l += 1;
-                r -= 1;
-            }
-        }
-        output.push_str(&format!(
-            "{}\n",
-            match (is_palindrome, removed) {
-                (true, false) => 0,
-                (true, true) => 1,
-                (false, _) => 2,
-            }
-        ));
+        output.push_str(&format!("{}\n", classify(&chars)));
     }
     print!("{output}");
 }
 
-fn check_palindrome(chars: &[char]) -> bool {
-    let len = chars.len();
-    for i in 0..len / 2 {
-        if chars[i] != chars[len - 1 - i] {
-            return false;
+fn classify(chars: &[char]) -> u8 {
+    let (mut l, mut r) = (0, chars.len() - 1);
+    while l < r {
+        if chars[l] != chars[r] {
+            return if check_palindrome(&chars[l + 1..=r]) || check_palindrome(&chars[l..=r - 1]) {
+                1
+            } else {
+                2
+            };
         }
+        l += 1;
+        r -= 1;
     }
-    true
+    0
+}
+
+fn check_palindrome(chars: &[char]) -> bool {
+    chars.iter().eq(chars.iter().rev())
 }
