@@ -11,23 +11,15 @@ fn main() {
     let nums: Vec<usize> = (0..n).map(|_| f()).collect();
 
     let mut map = HashMap::new();
-    let (mut l, mut r, mut max_len) = (0, 0, 0);
-    while r < n {
-        if let Some(count) = map.get(&nums[r]) {
-            if *count == k {
-                loop {
-                    let num = map.get_mut(&nums[l]).unwrap();
-                    *num -= 1;
-                    l += 1;
-                    if nums[l - 1] == nums[r] {
-                        break;
-                    }
-                }
-            }
+    let (mut l, mut max_len) = (0, 0);
+    for r in 0..n {
+        let num = map.entry(nums[r]).or_insert(0);
+        *num += 1;
+        while *map.get(&nums[r]).unwrap() > k {
+            *map.get_mut(&nums[l]).unwrap() -= 1;
+            l += 1;
         }
-        *map.entry(nums[r]).or_insert(0) += 1;
-        r += 1;
-        max_len = max_len.max(r - l);
+        max_len = max_len.max(r - l + 1);
     }
     print!("{max_len}");
 }
