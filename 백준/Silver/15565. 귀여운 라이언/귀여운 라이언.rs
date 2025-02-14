@@ -11,12 +11,12 @@ fn main() {
     let is_ryan: Vec<bool> = (0..n).map(|_| f() == 1).collect();
 
     let mut ans = usize::MAX;
-    let (mut l, mut r, mut ryan_count) = (0, 0, 0);
-    while r < n {
+    let (mut l, mut ryan_count) = (0, 0);
+    for r in 0..n {
         if is_ryan[r] {
             ryan_count += 1;
         }
-        while ryan_count >= k && l < r {
+        while ryan_count >= k {
             if ryan_count == k {
                 ans = ans.min(r - l + 1);
             }
@@ -25,7 +25,6 @@ fn main() {
             }
             l += 1;
         }
-        r += 1;
     }
     print!("{}", if ans == usize::MAX { -1 } else { ans as i32 });
 }
