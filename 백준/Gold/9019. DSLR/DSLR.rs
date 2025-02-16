@@ -1,6 +1,6 @@
 use std::{
     collections::VecDeque,
-    io::{self, BufReader, Read},
+    io::{self, BufReader, BufWriter, Read, Write},
 };
 
 fn main() {
@@ -11,7 +11,7 @@ fn main() {
     let mut input = buf.split_ascii_whitespace().flat_map(str::parse::<usize>);
     let mut f = || input.next().unwrap();
     let t = f();
-    let mut output = String::with_capacity(1024 * 1024);
+    let mut out = BufWriter::new(io::stdout());
     for _ in 0..t {
         let (a, b) = (f(), f());
         let mut q = VecDeque::new();
@@ -25,9 +25,9 @@ fn main() {
                     idx = parent[idx].0;
                 }
                 for c in commands.into_iter().rev() {
-                    output.push_str(c);
+                    write!(out, "{c}").unwrap();
                 }
-                output.push('\n');
+                writeln!(out).unwrap();
                 break;
             }
             let (d, s, l, r) = (
@@ -38,21 +38,21 @@ fn main() {
             );
             if parent[d].1.is_none() {
                 q.push_back(d);
-                parent[d] = (num, Some("D"));
+                parent[d] = (num, Some('D'));
             }
             if parent[s].1.is_none() {
                 q.push_back(s);
-                parent[s] = (num, Some("S"));
+                parent[s] = (num, Some('S'));
             }
             if parent[l].1.is_none() {
                 q.push_back(l);
-                parent[l] = (num, Some("L"));
+                parent[l] = (num, Some('L'));
             }
             if parent[r].1.is_none() {
                 q.push_back(r);
-                parent[r] = (num, Some("R"));
+                parent[r] = (num, Some('R'));
             }
         }
     }
-    print!("{output}");
+    out.flush().unwrap();
 }
