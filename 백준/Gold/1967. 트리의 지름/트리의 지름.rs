@@ -15,24 +15,22 @@ fn main() {
         tree[b].push((a, w));
     }
 
-    let mut max_weight = 0;
-    for i in 0..n {
-        let mut visited = vec![false; n];
-        visited[i] = true;
-        max_weight = max_weight.max(dfs(i, &tree, &mut visited));
-    }
+    let (node, _) = dfs(&tree, 0, 0);
+    let (_, max_weight) = dfs(&tree, node, n);
 
     print!("{max_weight}");
 }
 
-fn dfs(start: usize, tree: &[Vec<(usize, usize)>], visited: &mut [bool]) -> usize {
-    let mut max_weight = 0;
-    for &(next, weight) in tree[start].iter() {
-        if !visited[next] {
-            visited[next] = true;
-            max_weight = max_weight.max(dfs(next, tree, visited) + weight);
-            visited[next] = false;
+fn dfs(tree: &[Vec<(usize, usize)>], node: usize, parent: usize) -> (usize, usize) {
+    let (mut fartest_node, mut max_weight) = (node, 0);
+    for (next, weight) in tree[node].iter() {
+        if *next != parent {
+            let (far_node, far_weight) = dfs(tree, *next, node);
+            if far_weight + weight > max_weight {
+                max_weight = far_weight + weight;
+                fartest_node = far_node;
+            }
         }
     }
-    max_weight
+    (fartest_node, max_weight)
 }
