@@ -9,13 +9,9 @@ fn main() {
     let (mut l, mut r) = (0, i32::MAX as usize);
     while l + 1 < r {
         let mid = (l + r) / 2;
-        match check(&kettles, k, mid) {
-            true => {
-                l = mid;
-            }
-            false => {
-                r = mid;
-            }
+        (l, r) = match check(&kettles, k, mid) {
+            true => (mid, r),
+            false => (l, mid),
         }
     }
     print!("{l}");
