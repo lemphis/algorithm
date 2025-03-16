@@ -17,7 +17,6 @@ fn main() {
 
     let mut count = 0;
     while !is_clear(&paper) {
-        // dbg!(&paper);
         melt(&mut paper, n, m);
         count += 1;
     }
@@ -30,10 +29,11 @@ fn is_clear(paper: &[Vec<bool>]) -> bool {
 }
 
 fn melt(paper: &mut [Vec<bool>], n: usize, m: usize) {
-    let mut q = VecDeque::new();
+    let mut q = VecDeque::with_capacity(100);
     q.push_back((0, 0));
 
     let mut visited = vec![vec![false; m]; n];
+    visited[0][0] = true;
 
     let mut touch_count = vec![vec![0; m]; n];
     while let Some((r, c)) = q.pop_front() {
