@@ -1,3 +1,4 @@
+#include <climits>
 #include <functional>
 #include <iostream>
 #include <queue>
@@ -9,7 +10,7 @@ using namespace std;
 
 using pii = pair<int, int>;
 
-vector<int> dijkstra(vector<vector<pii>> adj);
+vector<int> dijkstra(const vector<vector<pii>>& adj);
 
 int main() {
     fastio;
@@ -28,8 +29,8 @@ int main() {
     return 0;
 }
 
-vector<int> dijkstra(vector<vector<pii>> adj) {
-    vector<int> dist(adj.size(), ~(1 << 31));
+vector<int> dijkstra(const vector<vector<pii>>& adj) {
+    vector<int> dist(adj.size(), INT_MAX);
     dist[0] = 0;
 
     priority_queue<pii, vector<pii>, greater<pii>> pq;
@@ -39,6 +40,9 @@ vector<int> dijkstra(vector<vector<pii>> adj) {
         pq.pop();
         int d = top.first;
         int node = top.second;
+        if (d != dist[node]) {
+            continue;
+        }
         for (int i = 0; i < adj[node].size(); ++i) {
             if (dist[adj[node][i].first] > d + adj[node][i].second) {
                 dist[adj[node][i].first] = d + adj[node][i].second;
