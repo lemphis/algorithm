@@ -12,10 +12,13 @@ fn main() {
         preorder.push(num);
     }
 
-    traverse(&preorder, 0, preorder.len());
+    let mut output = String::with_capacity(50000);
+    traverse(&preorder, 0, preorder.len(), &mut output);
+
+    print!("{output}");
 }
 
-fn traverse(preorder: &[usize], start: usize, end: usize) {
+fn traverse(preorder: &[usize], start: usize, end: usize, output: &mut String) {
     if start >= end {
         return;
     }
@@ -25,8 +28,8 @@ fn traverse(preorder: &[usize], start: usize, end: usize) {
         mid += 1;
     }
 
-    traverse(preorder, start + 1, mid);
-    traverse(preorder, mid, end);
+    traverse(preorder, start + 1, mid, output);
+    traverse(preorder, mid, end, output);
 
-    println!("{}", preorder[start]);
+    output.push_str(&format!("{}\n", preorder[start]));
 }
