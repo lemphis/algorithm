@@ -9,13 +9,13 @@
 using namespace std;
 
 using pii = pair<int, int>;
-using vii = vector<vector<pii>>;
+using vvp = vector<vector<pii>>;
 
 int main() {
     fastio;
     int N, M;
     cin >> N >> M;
-    vii tree(N);
+    vvp tree(N);
     for (int i = 0; i < N - 1; ++i) {
         int s, e, w;
         cin >> s >> e >> w;
