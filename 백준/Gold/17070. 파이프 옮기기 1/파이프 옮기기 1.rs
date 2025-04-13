@@ -32,31 +32,13 @@ fn main() {
             let [v_count, h_count, d_count] = dp[row][col];
 
             if can_move_in_direction(&map, row, col, Direction::Vertical) {
-                if v_count > 0 {
-                    dp[row + 1][col][v] += v_count;
-                }
-                if d_count > 0 {
-                    dp[row + 1][col][v] += d_count;
-                }
+                dp[row + 1][col][v] += v_count + d_count;
             }
             if can_move_in_direction(&map, row, col, Direction::Horizontal) {
-                if h_count > 0 {
-                    dp[row][col + 1][h] += h_count;
-                }
-                if d_count > 0 {
-                    dp[row][col + 1][h] += d_count;
-                }
+                dp[row][col + 1][h] += h_count + d_count;
             }
             if can_move_in_direction(&map, row, col, Direction::Diagonal) {
-                if v_count > 0 {
-                    dp[row + 1][col + 1][d] += v_count;
-                }
-                if h_count > 0 {
-                    dp[row + 1][col + 1][d] += h_count;
-                }
-                if d_count > 0 {
-                    dp[row + 1][col + 1][d] += d_count;
-                }
+                dp[row + 1][col + 1][d] += v_count + h_count + d_count;
             }
         }
     }
@@ -72,8 +54,8 @@ fn can_move_in_direction(map: &[Vec<bool>], row: usize, col: usize, direction: D
         Direction::Diagonal => {
             row + 1 < n
                 && col + 1 < n
-                && map[row + 1][col]
                 && map[row][col + 1]
+                && map[row + 1][col]
                 && map[row + 1][col + 1]
         }
     }
