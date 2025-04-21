@@ -1,4 +1,3 @@
-#include <algorithm>
 #include <iostream>
 #include <vector>
 
@@ -12,8 +11,9 @@ int main() {
 
     int N;
     cin >> N;
-    vector<pair<pair<int, int>, string>> pokemons;
     int sum = 0;
+    int max = 0;
+    string max_count_name;
     for (int i = 0; i < N; ++i) {
         string name;
         cin >> name;
@@ -26,18 +26,14 @@ int main() {
             q += temp_q;
             r = r % K + temp_q * 2;
         }
+        if (max < q) {
+            max = q;
+            max_count_name = name;
+        }
         sum += q;
-        pokemons.push_back({{q, i}, name});
     }
 
-    sort(pokemons.begin(), pokemons.end(), [](auto& a, auto& b) -> bool {
-        if (a.first.first == b.first.first) {
-            return a.first.second < b.first.second;
-        }
-        return a.first.first > b.first.first;
-    });
-
-    cout << sum << endl << pokemons[0].second;
+    cout << sum << endl << max_count_name;
 
     return 0;
 }
