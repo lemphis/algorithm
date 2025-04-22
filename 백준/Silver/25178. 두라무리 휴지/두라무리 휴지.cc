@@ -27,16 +27,17 @@ int main() {
     }
 
     string ca, cb;
-    for (char ch : a) {
-        if (string("aeiou").find(ch) != string::npos)
-            continue;
-        ca += ch;
+    for (int i = 0; i < N; ++i) {
+        if (!(a[i] == 'a' || a[i] == 'e' || a[i] == 'i' || a[i] == 'o' ||
+              a[i] == 'u')) {
+            ca += a[i];
+        }
+        if (!(b[i] == 'a' || b[i] == 'e' || b[i] == 'i' || b[i] == 'o' ||
+              b[i] == 'u')) {
+            cb += b[i];
+        }
     }
-    for (char ch : b) {
-        if (string("aeiou").find(ch) != string::npos)
-            continue;
-        cb += ch;
-    }
+
     if (ca != cb) {
         cout << "NO";
         return 0;
