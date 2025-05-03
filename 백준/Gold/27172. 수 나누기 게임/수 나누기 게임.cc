@@ -1,6 +1,5 @@
 #include <cstring>
 #include <iostream>
-#include <sstream>
 #include <vector>
 
 #define fastio cin.tie(0)->sync_with_stdio(0)
@@ -37,12 +36,13 @@ int main() {
         }
     }
 
-    ostringstream output;
+    string output;
+    output.reserve(N * 4);
     for (int i = 0; i < N; ++i) {
-        output << scores[i] << ' ';
+        output += to_string(scores[i]);
+        output += ' ';
     }
-
-    cout << output.str();
+    cout << output;
 
     return 0;
 }
