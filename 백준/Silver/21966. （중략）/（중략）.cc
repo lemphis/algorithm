@@ -9,9 +9,8 @@ int main() {
     fastio;
 
     int N;
-    cin >> N;
     string S;
-    cin >> S;
+    cin >> N >> S;
 
     if (S.length() <= 25) {
         cout << S;
@@ -26,15 +25,10 @@ int main() {
         }
         string ans;
         if (is_same_sentence) {
-            ans += S.substr(0, 11);
-            ans += "...";
-            ans += S.substr(last_idx);
+            cout << S.substr(0, 11) << "..." << S.substr(last_idx);
         } else {
-            ans += S.substr(0, 9);
-            ans += "......";
-            ans += S.substr(S.length() - 10);
+            cout << S.substr(0, 9) << "......" << S.substr(S.length() - 10);
         }
-        cout << ans;
     }
 
     return 0;
