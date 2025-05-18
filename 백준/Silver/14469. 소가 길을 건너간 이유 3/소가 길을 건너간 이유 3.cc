@@ -19,12 +19,8 @@ int main() {
     sort(cows, cows + N);
 
     int second = 0;
-    for (int i = 0; i < N; ++i) {
-        if (cows[i].first > second) {
-            second = cows[i].first + cows[i].second;
-        } else {
-            second += cows[i].second;
-        }
+    for (auto& [a, b] : cows) {
+        second = max(second, a) + b;
     }
 
     cout << second;
