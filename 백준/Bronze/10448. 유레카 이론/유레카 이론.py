@@ -1,22 +1,12 @@
-dp = [0] * 1_001
-for i in range(1, 1_001):
-    dp[i] = dp[i - 1] + i
-
-
-def find(target):
-    for i in range(1, 1_001):
-        if dp[i] > target:
-            break
-        for j in range(i, 1_001):
-            if dp[i] + dp[j] > target:
-                break
-            for k in range(j, 1_001):
-                if dp[i] + dp[j] + dp[k] == target:
-                    return True
-    return False
-
+nums = [i * (i + 1) // 2 for i in range(1, 46)]
+ans = [False] * 1_001
+for i in nums:
+    for j in nums:
+        for k in nums:
+            if i + j + k <= 1000:
+                ans[i + j + k] = True
 
 T = int(input())
 for _ in range(T):
     K = int(input())
-    print(1 if find(K) else 0)
+    print(1 if ans[K] else 0)
