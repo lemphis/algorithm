@@ -1,13 +1,11 @@
 N = int(input())
 P = list(map(int, input().split()))
-before = P[0]
 len, max_len = 0, 0
-for num in P[1:]:
-    if num > before:
-        len += num - before
+for i in range(1, N):
+    if P[i] > P[i - 1]:
+        len += P[i] - P[i - 1]
         max_len = max(max_len, len)
     else:
         len = 0
-    before = num
 
 print(max_len)
