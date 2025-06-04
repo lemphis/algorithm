@@ -1,4 +1,4 @@
-N = input()
+N = int(input())
 seats = input()
 s_count, l_count = 0, 0
 for seat in seats:
@@ -7,9 +7,4 @@ for seat in seats:
     else:
         l_count += 1
 
-if l_count == 0:
-    print(N)
-elif s_count == 0:
-    print(N - 1)
-else:
-    print(s_count + (l_count // 2) + 1)
+print(N if l_count == 0 else s_count + (l_count // 2) + 1)
