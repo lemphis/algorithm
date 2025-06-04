@@ -1,3 +1,3 @@
 N = int(input())
 
-print(sum(i * N + i for i in range(N)))
+print((N**3 - N) >> 1)
