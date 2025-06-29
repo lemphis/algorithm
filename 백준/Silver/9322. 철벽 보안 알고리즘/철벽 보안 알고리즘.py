@@ -4,14 +4,7 @@ for _ in range(tc):
     first_public_key, second_public_key, encrypted_text = [
         input().split() for _ in range(3)
     ]
-    key_map = {}
-    for i in range(n):
-        for j in range(n):
-            if first_public_key[i] == second_public_key[j]:
-                key_map[i] = j
-                break
-    ans = []
-    for i in range(n):
-        ans.append(encrypted_text[key_map[i]])
+    second_idx = {word: idx for idx, word in enumerate(second_public_key)}
+    key_map = [second_idx[w] for w in first_public_key]
 
-    print(*ans)
+    print(*[encrypted_text[key_map[i]] for i in range(n)])
