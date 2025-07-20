@@ -14,4 +14,4 @@ while total_pen_count > 0 and idx < N:
     total_pen_count -= A[idx]
     idx += 1
 
-print("STRESS" if idx == N and total_pen_count > 0 else idx)
+print("STRESS" if total_pen_count > 0 else idx)
