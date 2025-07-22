@@ -1,24 +1,22 @@
 import sys
-from collections import deque
 
 input = sys.stdin.readline
 
 N, M = map(int, input().split())
-
-trains = [deque([False] * 20) for _ in range(N)]
+masks = [0] * N
 for _ in range(M):
-    commands = tuple(map(int, input().split()))
-    if commands[0] == 1:
-        trains[commands[1] - 1][commands[2] - 1] = True
-    elif commands[0] == 2:
-        trains[commands[1] - 1][commands[2] - 1] = False
-    elif commands[0] == 3:
-        trains[commands[1] - 1].pop()
-        trains[commands[1] - 1].appendleft(False)
+    cmd = list(map(int, input().split()))
+    op = cmd[0]
+    i = cmd[1] - 1
+    if op == 1:
+        x = cmd[2] - 1
+        masks[i] |= 1 << x
+    elif op == 2:
+        x = cmd[2] - 1
+        masks[i] &= ~(1 << x)
+    elif op == 3:
+        masks[i] = (masks[i] << 1) & ((1 << 20) - 1)
     else:
-        trains[commands[1] - 1].popleft()
-        trains[commands[1] - 1].append(False)
+        masks[i] >>= 1
 
-s = {sum(1 << i if train[i] else 0 for i in range(20)) for train in trains}
-
-print(len(s))
+print(len(set(masks)))
