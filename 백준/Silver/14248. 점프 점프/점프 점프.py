@@ -1,5 +1,4 @@
 import sys
-from collections import deque
 
 input = sys.stdin.readline
 
@@ -9,13 +8,13 @@ s = int(input())
 
 visited = [False] * n
 visited[s - 1] = True
-dq = deque([s - 1])
-while dq:
-    pos = dq.popleft()
+arr = [s - 1]
+while arr:
+    pos = arr.pop()
     for d in (-A[pos], A[pos]):
         next = pos + d
         if 0 <= next < n and not visited[next]:
             visited[next] = True
-            dq.append(next)
+            arr.append(next)
 
 print(sum(visited))
