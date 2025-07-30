@@ -25,17 +25,24 @@ m_prime_count = {k: 0 for k in primes}
 for num in n_nums:
     temp = num
     for prime in primes:
+        if prime * prime > temp:
+            break
         while temp % prime == 0:
             n_prime_count[prime] += 1
             temp //= prime
-    n_prime_count[temp] = n_prime_count.get(temp, 0) + 1
+
+    if temp > 1:
+        n_prime_count[temp] = n_prime_count.get(temp, 0) + 1
 for num in m_nums:
     temp = num
     for prime in primes:
+        if prime * prime > temp:
+            break
         while temp % prime == 0:
             m_prime_count[prime] += 1
             temp //= prime
-    m_prime_count[temp] = m_prime_count.get(temp, 0) + 1
+    if temp > 1:
+        m_prime_count[temp] = m_prime_count.get(temp, 0) + 1
 
 intersection = {
     k: min(n_prime_count[k], m_prime_count[k])
