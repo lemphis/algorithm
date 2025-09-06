@@ -5,9 +5,6 @@
      1. Python
      2. C++
      3. Rust
-     4. Kotlin
-     5. Java
-     6. JavaScript
 
 - Online Judge
   - [baekjoon](https://www.acmicpc.net)
