@@ -8,13 +8,13 @@ def boom(field):
         for c in range(12):
             if field[r][c] in ["R", "G", "B", "P", "Y"]:
                 color = field[r][c]
-                is_boom |= bfs(field, color, r, c)
+                if bfs(field, color, r, c):
+                    is_boom = True
 
     return is_boom
 
 
 def bfs(field, color, r, c):
-    is_boom = False
     dq = deque([(r, c)])
     field[r][c] = "."
     same_poses = [(r, c)]
@@ -30,10 +30,9 @@ def bfs(field, color, r, c):
     if len(same_poses) < 4:
         for row, col in same_poses:
             field[row][col] = color
-    else:
-        is_boom = True
+        return False
 
-    return is_boom
+    return True
 
 
 def drop(field):
