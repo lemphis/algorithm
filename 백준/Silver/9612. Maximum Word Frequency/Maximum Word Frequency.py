@@ -4,15 +4,8 @@ input = sys.stdin.readline
 
 n = int(input())
 d = {}
-m = ("", 0)
 for _ in range(n):
     s = input().strip()
-    if s in d:
-        d[s] += 1
-    else:
-        d[s] = 1
+    d[s] = d.get(s, 0) + 1
 
-    if d[s] > m[1] or (d[s] == m[1] and s > m[0]):
-        m = (s, d[s])
-
-print(*m)
+print(*max(d.items(), key=lambda x: (x[1], x[0])))
